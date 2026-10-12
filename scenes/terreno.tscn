@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://8i0jc2vb0r04"]
+
+[ext_resource type="PackedScene" uid="uid://d18tk41locdxb" path="res://scenes/enemigo.tscn" id="1_c2jl1"]
+[ext_resource type="PackedScene" uid="uid://j163hl21cnid" path="res://scenes/jugador.tscn" id="2_e2qoi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2qoi"]
+size = Vector2(32, 438.5)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_e2qoi"]
+vertices = PackedVector2Array(577.6094, 565, 1130, 20, 1130, 624.97656, 578.59375, 613.96094, 567.7969, 78.8125, 21.9375, 20, 497, 80.1875, 18.0625, 622.03906, 497, 565, 497, 613.0625, 497, 623.9531, 578.78906, 624.0078)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(1, 0, 4), PackedInt32Array(5, 1, 4, 6), PackedInt32Array(7, 5, 6, 8), PackedInt32Array(9, 10, 7), PackedInt32Array(9, 7, 8, 0), PackedInt32Array(3, 9, 0), PackedInt32Array(3, 2, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(12, 10, 1140, 10, 1140, 635, 569, 634, 567.4072, 555.088, 558, 89, 507, 90, 507, 556.3496, 507, 634, 8, 632), PackedVector2Array(495, 555, 582, 555, 582, 624, 491, 623)])
+agent_radius = 1.0
+
+[node name="Terreno" type="Node2D" unique_id=1980030626]
+
+[node name="Enemigo" parent="." unique_id=2091331257 instance=ExtResource("1_c2jl1")]
+position = Vector2(969, 268)
+
+[node name="Jugador" parent="." unique_id=1205495324 instance=ExtResource("2_e2qoi")]
+position = Vector2(181, 274)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=708617324]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=82782593]
+position = Vector2(533, 320.75)
+shape = SubResource("RectangleShape2D_e2qoi")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=840898943]
+color = Color(0.2430861, 3.6001802e-05, 0.91510576, 1)
+polygon = PackedVector2Array(517, 102, 549, 103, 547, 539, 517, 540)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1987256237]
+navigation_polygon = SubResource("NavigationPolygon_e2qoi")

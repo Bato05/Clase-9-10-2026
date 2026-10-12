@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d18tk41locdxb"]
+
+[ext_resource type="Texture2D" uid="uid://caqfc6wv4hxwp" path="res://icon.svg" id="1_7kcpm"]
+[ext_resource type="Script" uid="uid://cg2opjnjhp3vy" path="res://scripts/enemigo.gd" id="1_hlx46"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hlx46"]
+radius = 15.231546
+
+[node name="Enemigo" type="CharacterBody2D" unique_id=2091331257]
+script = ExtResource("1_hlx46")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1500774370]
+modulate = Color(0.94, 0, 0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_7kcpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1285145974]
+shape = SubResource("CircleShape2D_hlx46")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1509555193]
+
+[node name="Timer" type="Timer" parent="." unique_id=1893744321]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
